@@ -146,7 +146,7 @@ export function Navbar() {
             <button
               onClick={toggleTheme}
               aria-label="Toggle theme"
-              className={`p-2.5 rounded-xl transition-all duration-200 ${
+              className={`p-3 rounded-xl transition-all duration-200 ${
                 isDark
                   ? "text-slate-400 hover:text-white hover:bg-white/10"
                   : "text-slate-600 hover:text-slate-900 hover:bg-black/10"
@@ -183,7 +183,7 @@ export function Navbar() {
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
-              className={`md:hidden p-2.5 rounded-xl transition-colors ${
+              className={`md:hidden p-3 rounded-xl transition-colors ${
                 isDark
                   ? "text-slate-400 hover:text-white hover:bg-white/10"
                   : "text-slate-600 hover:text-slate-900 hover:bg-black/10"
@@ -208,7 +208,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className={`md:hidden overflow-hidden border-t ${
+            className={`md:hidden overflow-y-auto max-h-[80vh] border-t ${
               isDark
                 ? "bg-slate-900/95 backdrop-blur-xl border-white/10"
                 : "bg-white/95 backdrop-blur-xl border-gray-200"

@@ -28,7 +28,7 @@ export function Certifications() {
           {certifications.map((cert, i) => (
             <AnimatedSection key={cert.id} delay={i * 0.1}>
               <div
-                className={`relative p-6 rounded-2xl border h-full card-hover ${
+                className={`relative p-5 sm:p-6 rounded-2xl border h-full card-hover ${
                   cert.placeholder
                     ? isDark
                       ? "glass-card border-dashed border-white/15 opacity-60"

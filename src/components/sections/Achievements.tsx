@@ -1,12 +1,13 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import { Zap, TrendingUp, Brain, Award, Shield, Globe } from "lucide-react";
 import { achievements } from "@/data/portfolio";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { SectionHeader } from "@/components/ui/AnimatedSection";
 
-const iconMap: { [key: string]: any } = {
+const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   Zap: Zap,
   TrendingUp: TrendingUp,
   Brain: Brain,
@@ -22,7 +23,7 @@ export function Achievements() {
   return (
     <section
       id="achievements"
-      className={`py-24 relative overflow-hidden ${
+      className={`section-padding relative overflow-hidden ${
         isDark ? "bg-slate-950 text-white" : "bg-slate-50 text-slate-900"
       }`}
     >
@@ -52,7 +53,7 @@ export function Achievements() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className={`p-8 rounded-2xl border transition-all duration-300 relative overflow-hidden group ${
+                className={`p-5 sm:p-8 rounded-2xl border transition-all duration-300 relative overflow-hidden group ${
                   isDark
                     ? "bg-slate-900/50 border-white/10 hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/5"
                     : "bg-white border-slate-200 hover:border-blue-400 hover:shadow-2xl hover:shadow-blue-500/5"

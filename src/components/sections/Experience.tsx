@@ -75,7 +75,7 @@ export function Experience() {
 
                   {/* Content */}
                   <div
-                    className={`flex-1 p-6 sm:p-8 rounded-2xl border card-hover ${
+                    className={`flex-1 p-5 sm:p-8 rounded-2xl border card-hover ${
                       exp.current
                         ? isDark
                           ? "glass-card border-blue-500/30 shadow-lg shadow-blue-500/10"

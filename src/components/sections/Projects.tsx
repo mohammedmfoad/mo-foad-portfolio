@@ -40,7 +40,7 @@ function ProjectCard({
   return (
     <motion.div
       layout
-      className={`relative p-6 rounded-2xl border h-fit card-hover transition-all duration-300 ${
+      className={`relative p-5 sm:p-6 rounded-2xl border h-fit card-hover transition-all duration-300 ${
         project.featured
           ? isDark
             ? "glass-card border-blue-500/25 shadow-lg shadow-blue-500/5"
@@ -286,7 +286,7 @@ export function Projects() {
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+              className={`px-4 py-2 sm:py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
                 filter === cat
                   ? "bg-blue-600 text-white shadow-lg shadow-blue-500/20"
                   : isDark

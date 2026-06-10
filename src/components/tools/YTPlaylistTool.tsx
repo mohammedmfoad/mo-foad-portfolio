@@ -99,7 +99,7 @@ export function YTPlaylistTool() {
         const channelName = firstItem?.snippet?.channelTitle || "YouTube Creator";
 
         videosList = videosList.concat(
-          items.map((item: any) => ({
+          items.map((item: { contentDetails?: { videoId?: string } }) => ({
             id: item.contentDetails?.videoId,
           }))
         );
@@ -128,7 +128,7 @@ export function YTPlaylistTool() {
         const data = await res.json();
         const items = data.items || [];
         
-        items.forEach((item: any) => {
+        items.forEach((item: { contentDetails?: { duration?: string } }) => {
           const durationStr = item.contentDetails?.duration;
           if (durationStr) {
             totalDurationSeconds += parseISO8601Duration(durationStr);
@@ -144,9 +144,9 @@ export function YTPlaylistTool() {
         averageDurationSeconds: Math.round(totalDurationSeconds / videoIds.length),
       });
 
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
-      setErrorMsg(err.message || "An error occurred while fetching playlist details.");
+      setErrorMsg(err instanceof Error ? err.message : "An error occurred while fetching playlist details.");
     } finally {
       setIsLoading(false);
     }

@@ -9,7 +9,7 @@ import { PdfToWordTool } from "./PdfToWordTool";
 import { YTPlaylistTool } from "./YTPlaylistTool";
 import { YTDownloaderTool } from "./YTDownloaderTool";
 
-const iconMap: { [key: string]: any } = {
+const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   FileText: FileText,
   Youtube: Youtube,
   Download: Download,
@@ -39,7 +39,7 @@ export function ToolsGrid() {
 
   const handleSelectTool = (toolId: string) => {
     setActiveTool(toolId);
-    window.location.hash = toolId;
+    window.history.pushState(null, "", `#${toolId}`);
   };
 
   const handleBack = () => {

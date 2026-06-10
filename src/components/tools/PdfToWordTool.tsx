@@ -25,7 +25,7 @@ function parsePdfTextContent(streamText: string): string {
   const regex = /\((.*?)\)\s*(?:Tj|TJ)/g;
   let match;
   while ((match = regex.exec(streamText)) !== null) {
-    let cleanText = match[1]
+    const cleanText = match[1]
       .replace(/\\([\(\)])/g, "$1") // Unescape parentheses
       .replace(/\\r/g, "\n")
       .replace(/\\n/g, "\n")
@@ -63,11 +63,11 @@ async function extractTextFromPdf(arrayBuffer: ArrayBuffer): Promise<string[]> {
   for (const page of pages) {
     let pageText = "";
     // Access content stream directly to do a best-effort text extraction
-    const { Contents } = page.node as any;
+    const { Contents } = page.node as Record<string, unknown>;
     if (Contents) {
       const contentsArray = Array.isArray(Contents) ? Contents : [Contents];
       for (const contentRef of contentsArray) {
-        const contentStream = pdfDoc.context.lookup(contentRef) as any;
+        const contentStream = pdfDoc.context.lookup(contentRef) as { decode?: () => Uint8Array };
         if (contentStream && typeof contentStream.decode === "function") {
           try {
             const bytes = contentStream.decode();
@@ -193,10 +193,10 @@ export function PdfToWordTool() {
       
       setProgress(100);
       setStatus("success");
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
       setStatus("error");
-      setErrorMsg(err.message || "An error occurred while converting the PDF.");
+      setErrorMsg(err instanceof Error ? err.message : "An error occurred while converting the PDF.");
     }
   };
 

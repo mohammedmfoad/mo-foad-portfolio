@@ -100,7 +100,7 @@ export function About() {
 
               {/* Contact info card */}
               <div
-                className={`w-full rounded-2xl p-6 border glass-card ${
+                className={`w-full rounded-2xl p-5 sm:p-6 border glass-card ${
                   isDark ? "border-white/10" : "border-slate-200"
                 }`}
               >

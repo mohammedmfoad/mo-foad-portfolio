@@ -246,7 +246,7 @@ app.listen(PORT, () => console.log(\`Backend running on port \${PORT}\`));`;
               ].map((tab) => (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id as any)}
+                  onClick={() => setActiveTab(tab.id as "architecture" | "nodejs" | "api")}
                   className={`px-4 py-2 text-xs font-semibold border-b-2 transition-all -mb-[2px] ${
                     activeTab === tab.id
                       ? "border-purple-500 text-purple-400"

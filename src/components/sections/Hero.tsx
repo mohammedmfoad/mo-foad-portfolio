@@ -136,7 +136,7 @@ function TypewriterText({ texts }: { texts: string[] }) {
           setCurrentText(target.slice(0, currentText.length + 1));
         }, 60);
       } else {
-        setIsPaused(true);
+        setTimeout(() => setIsPaused(true), 0);
         setTimeout(() => setIsDeleting(true), 1500);
       }
     } else {
@@ -145,8 +145,8 @@ function TypewriterText({ texts }: { texts: string[] }) {
           setCurrentText(currentText.slice(0, -1));
         }, 35);
       } else {
-        setIsDeleting(false);
-        setCurrentIndex((prev) => (prev + 1) % texts.length);
+        setTimeout(() => setIsDeleting(false), 0);
+        setTimeout(() => setCurrentIndex((prev) => (prev + 1) % texts.length), 0);
       }
     }
 
@@ -276,14 +276,14 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col sm:flex-row items-center gap-4 mb-12"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 w-full max-w-md sm:max-w-none mx-auto"
           >
             <button
               onClick={() => {
                 const el = document.getElementById("projects");
                 if (el) el.scrollIntoView({ behavior: "smooth" });
               }}
-              className="group flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold text-base shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-1 transition-all duration-300"
+              className="group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold text-base shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-1 transition-all duration-300"
             >
               View My Work
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -292,7 +292,7 @@ export function Hero() {
             <a
               href={personalInfo.cvFile}
               download
-              className={`group flex items-center gap-2 px-8 py-4 rounded-2xl font-semibold text-base border-2 transition-all duration-300 hover:-translate-y-1 ${
+              className={`group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-2xl font-semibold text-base border-2 transition-all duration-300 hover:-translate-y-1 ${
                 isDark
                   ? "border-white/20 text-white hover:border-blue-400 hover:bg-white/5"
                   : "border-slate-300 text-slate-700 hover:border-blue-400 hover:bg-blue-50"
@@ -307,7 +307,7 @@ export function Hero() {
                 const el = document.getElementById("contact");
                 if (el) el.scrollIntoView({ behavior: "smooth" });
               }}
-              className={`group flex items-center gap-2 px-8 py-4 rounded-2xl font-semibold text-base border-2 transition-all duration-300 hover:-translate-y-1 ${
+              className={`group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-2xl font-semibold text-base border-2 transition-all duration-300 hover:-translate-y-1 ${
                 isDark
                   ? "border-white/20 text-white hover:border-blue-400 hover:bg-white/5"
                   : "border-slate-300 text-slate-700 hover:border-blue-400 hover:bg-blue-50"
