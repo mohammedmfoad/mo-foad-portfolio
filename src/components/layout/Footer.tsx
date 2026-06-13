@@ -48,7 +48,7 @@ export function Footer() {
                 }`}
             >
               Senior Full Stack Engineer specializing in .NET Core, Angular, and
-              AI-driven systems. Building the future, one lineeeeeeee at a time.
+              AI-driven systems. Building the future, one line at a time.
             </p>
             <div className="flex items-center gap-1 mt-3">
               <MapPin className="w-4 h-4 text-blue-500" />
